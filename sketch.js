@@ -36,7 +36,8 @@ function getFn() {
 	frameRate(val);
 }
 function setup() {
-	createCanvas(CANVAS_W, CANVAS_H);
+//	createCanvas(CANVAS_W, CANVAS_H);
+	createCanvas(windowWidth, windowHeight);
 	time = millis();
 	rectMode(CENTER);
 
@@ -48,6 +49,7 @@ function setup() {
 	}
 	fSelect.size(GRID_SIZE*2);
 	fSelect.style('font-size', '32px');
+	fSelect.position(GRID_SIZE*1, GRID_SIZE*8);
 	textAlign(CENTER,CENTER);
 }
 function buttonInit(text, w, h, x, y) {
@@ -68,11 +70,11 @@ function draw() {
 	if (DEBUG){
 		stroke(128);
 		strokeWeight(1);
-		for (let i=0; i<CANVAS_H/GRID_SIZE; i++){
-			line(0, i*GRID_SIZE, CANVAS_W, i*GRID_SIZE);
+		for (let i=0; i<windowHeight/GRID_SIZE; i++){
+			line(0, i*GRID_SIZE, windowWidth, i*GRID_SIZE);
 		}
-		for (let i=0; i<CANVAS_W/GRID_SIZE; i++){
-			line(i*GRID_SIZE, 0, i*GRID_SIZE, CANVAS_H);
+		for (let i=0; i<windowWidth/GRID_SIZE; i++){
+			line(i*GRID_SIZE, 0, i*GRID_SIZE, windowHeight);
 		}
 	}
 	fill(255);
@@ -82,6 +84,7 @@ function draw() {
 	let debugY = DEBUG_VIEW_Y;
 	text('fps:'+fps, DEBUG_VIEW_X, debugY);
 	debugY += DEBUG_VIEW_H;
+	text('w:'+windowWidth+', h:'+windowHeight, DEBUG_VIEW_X, debugY);
 }
 function touchMoved() {
 	return false;

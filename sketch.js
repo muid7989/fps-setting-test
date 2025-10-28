@@ -7,10 +7,10 @@ const CANVAS_H = 480;
 const GRID_SIZE = 64;
 
 const BUTTON_OFFSET = 8;
-const BUTTON_W = GRID_SIZE*4;
-const BUTTON_H = GRID_SIZE*3;
-const BUTTON_X = GRID_SIZE*2;
-const BUTTON_Y = GRID_SIZE*2;
+const BUTTON_W = GRID_SIZE*3;
+const BUTTON_H = GRID_SIZE*2;
+const BUTTON_X = GRID_SIZE*4;
+const BUTTON_Y = GRID_SIZE*4;
 const BUTTON_M = 24;
 
 const FRAMERATE_SETTING = [
@@ -24,9 +24,9 @@ const FRAMERATE_SETTING = [
 let fSelect;
 
 const DEBUG = true;
-const DEBUG_VIEW_X = 40;
-const DEBUG_VIEW_Y = 20;
-const DEBUG_VIEW_H = 20;
+const DEBUG_VIEW_X = GRID_SIZE*1;
+const DEBUG_VIEW_Y = GRID_SIZE*1;
+const DEBUG_VIEW_H = GRID_SIZE;
 
 function preload() {
 }
@@ -49,8 +49,8 @@ function setup() {
 	}
 	fSelect.size(GRID_SIZE*2);
 	fSelect.style('font-size', '32px');
-	fSelect.position(GRID_SIZE*1, GRID_SIZE*8);
-	textAlign(CENTER,CENTER);
+	fSelect.position(GRID_SIZE*1, GRID_SIZE*4);
+	textAlign(LEFT,CENTER);
 }
 function buttonInit(text, w, h, x, y) {
 	let button = createButton(text);
@@ -78,9 +78,8 @@ function draw() {
 		}
 	}
 	fill(255);
-	stroke(255);
-	textSize(16);
-	strokeWeight(1);
+	noStroke();
+	textSize(48);
 	let debugY = DEBUG_VIEW_Y;
 	text('fps:'+fps, DEBUG_VIEW_X, debugY);
 	debugY += DEBUG_VIEW_H;
